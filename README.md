@@ -114,3 +114,35 @@ With more time, the next steps would be structured application logging/worker he
 ## Repository hygiene
 
 Commit source code, tests, sample data, this README, `.gitignore`, `.env.example`, and pinned `requirements.txt` only. Do **not** commit `.env`, `.venv/`, `tickets.db`, caches, or a raw ZIP of the development directory.
+
+---
+
+## References and learning resources
+
+These resources informed the implementation and provide background on its architectural choices. They are learning references, not runtime dependencies. Some videos show alternative architectures rather than the exact approach used here.
+
+### Documentation
+
+- [OWASP — SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html) — parameterized SQL queries and separation of data from SQL commands.
+- [OWASP — LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html) — treating ticket content as untrusted and limiting model authority.
+- [FastAPI — Lifespan Events](https://fastapi.tiangolo.com/advanced/events/) — starting and stopping the application-managed worker.
+- [Python — Coroutines and Tasks](https://docs.python.org/3/library/asyncio-task.html) — `async`/`await`, background tasks, and cancellation.
+- [Python — sqlite3](https://docs.python.org/3/library/sqlite3.html) — database connections, transactions, and parameter binding.
+- [Pydantic — Validators](https://docs.pydantic.dev/latest/concepts/validators/) — enforcing classification-output rules.
+- [OpenAI — Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs) — constraining and parsing model responses.
+
+### YouTube videos shared during development
+
+- [Asyncio in Python — Full Tutorial (Tech With Tim)](https://www.youtube.com/watch?v=Qb9s3UiMSTA) — Python asynchronous execution.
+- [YouTube reference — wbHaXVqX8sk](https://www.youtube.com/watch?v=wbHaXVqX8sk) — original video link; title not independently verified.
+- [YouTube reference — T522BP2DnbM](https://www.youtube.com/watch?v=T522BP2DnbM) — original video link; title not independently verified.
+- [FastAPI for AI Projects — Getting Started in 15 Minutes](https://www.youtube.com/watch?v=-IaCV5-mlSk) — building AI-facing HTTP endpoints.
+- [LLMs and AI Agents: Transforming Unstructured Data](https://www.youtube.com/watch?v=_pEEJu-2KKM) — wider context for transforming unstructured text into structured information.
+
+### Additional recommended videos
+
+- [Background Tasks in FastAPI — Asynchrony and Multithreading](https://www.youtube.com/watch?v=c6lX6o4dzqQ) — understanding asynchronous HTTP workloads and background execution.
+- [Python Pydantic Tutorial: Complete Data Validation Course (Corey Schafer)](https://www.youtube.com/watch?v=M81pfi64eeM) — data models, validation, and custom validators.
+
+**Architecture note:** This repository uses a lifespan-managed `asyncio` worker that polls persistent SQLite ticket state. It does **not** use FastAPI's per-request `BackgroundTasks` facility or a distributed task queue. The videos cover concepts and possible alternatives, not necessarily this exact implementation.
+
