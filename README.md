@@ -134,15 +134,12 @@ These resources informed the implementation and provide background on its archit
 ### YouTube videos shared during development
 
 - [Asyncio in Python — Full Tutorial (Tech With Tim)](https://www.youtube.com/watch?v=Qb9s3UiMSTA) — Python asynchronous execution.
-- [YouTube reference — wbHaXVqX8sk](https://www.youtube.com/watch?v=wbHaXVqX8sk) — original video link; title not independently verified.
-- [YouTube reference — T522BP2DnbM](https://www.youtube.com/watch?v=T522BP2DnbM) — original video link; title not independently verified.
+- [YouTube reference — wbHaXVqX8sk](https://www.youtube.com/watch?v=wbHaXVqX8sk) - Monkey Patching in Python
+- [YouTube reference — T522BP2DnbM](https://www.youtube.com/watch?v=T522BP2DnbM) - What is Pydantic? Python Data Validation Made Easy!
 - [FastAPI for AI Projects — Getting Started in 15 Minutes](https://www.youtube.com/watch?v=-IaCV5-mlSk) — building AI-facing HTTP endpoints.
 - [LLMs and AI Agents: Transforming Unstructured Data](https://www.youtube.com/watch?v=_pEEJu-2KKM) — wider context for transforming unstructured text into structured information.
-
-### Additional recommended videos
-
 - [Background Tasks in FastAPI — Asynchrony and Multithreading](https://www.youtube.com/watch?v=c6lX6o4dzqQ) — understanding asynchronous HTTP workloads and background execution.
 - [Python Pydantic Tutorial: Complete Data Validation Course (Corey Schafer)](https://www.youtube.com/watch?v=M81pfi64eeM) — data models, validation, and custom validators.
 
-**Architecture note:** This repository uses a lifespan-managed `asyncio` worker that polls persistent SQLite ticket state. It does **not** use FastAPI's per-request `BackgroundTasks` facility or a distributed task queue. The videos cover concepts and possible alternatives, not necessarily this exact implementation.
+**Architecture note:** The videos cover concepts and possible alternatives, not necessarily this exact implementation in the repository.
 
