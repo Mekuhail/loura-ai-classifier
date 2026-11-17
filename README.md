@@ -103,18 +103,17 @@ This local demonstration has **no authentication or authorization**, so it must 
 - **Single application process and single classifier worker.** Multiple workers could claim the same pending ticket without stronger transactional coordination.
 - **At-least-once inference attempts.** A crash after OpenAI returns but before persistence can result in another paid API call; recorded attempts are bounded.
 - **Database errors.** Reads retry with a delay, and successful result writes retry in memory; some failure-status persistence paths may still need additional handling. Persistent SQLite failures can stall work.
-- **Synchronous SQLite access inside the async worker.** Acceptable for this small workload but not appropriate for prolonged blocking operations under heavy load.
-- **Rate limiter.** In-memory per-IP limits reset on restart, are not shared across instances, and have no inactive-client eviction mechanism.
+- **Synchronous SQLite access inside the async worker.** It is acceptable for this small workload; not appropriate for prolonged blocking operations under heavy load.
+- **Rate limiter.** No inactive-client eviction mechanism. initial rate limiter created though to avoid abuse.
 - **No authentication, authorization, or production monitoring.** These would be essential in an internet-facing service.
 - **Summary validation.** The validator rejects blank/multiline text but cannot guarantee exactly one grammatical sentence or factual correctness.
-- **Evaluation.** Ten developer-labeled examples, one known adversarial sample; not representative of real-world traffic.
+- **Evaluation.** Not representative of real-world traffic.
 
 With more time, the next steps would be structured application logging/worker health checks, centralizing database schema setup in tests, finer-grained retries for transient vs permanent errors, stronger worker leasing for multiple instances, and a larger independent evaluation.
 
 ## Repository hygiene
-
-Commit source code, tests, sample data, this README, `.gitignore`, `.env.example`, and pinned `requirements.txt` only. Do **not** commit `.env`, `.venv/`, `tickets.db`, caches, or a raw ZIP of the development directory.
-
+Did **not** commit `.env`, `.venv/`, caches, or a raw ZIP of the development directory (;
+ 
 ---
 
 ## References and learning resources
