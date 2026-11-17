@@ -1,0 +1,13 @@
+
+{
+  "t-1001": {"category": "billing", "priority": "medium"},
+  "t-1002": {"category": "account", "priority": "medium"},
+  "t-1003": {"category": "technical", "priority": "high"},
+  "t-1004": {"category": "account", "priority": "low"},
+  "t-1005": {"category": "billing", "priority": "low"},
+  "t-1006": {"category": "other", "priority": "low"},
+  "t-1007": {"category": "billing", "priority": "medium"},
+  "t-1008": {"category": "other", "priority": "low"},
+  "t-1009": {"category": "technical", "priority": "medium"},
+  "t-1010": {"category": "technical", "priority": "medium"}
+}

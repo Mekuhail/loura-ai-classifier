@@ -1,0 +1,22 @@
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# API credentials
+.env
+
+# Local SQLite database
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+
+# macOS
+.DS_Store
+
+# Local project archives
+*.zip
