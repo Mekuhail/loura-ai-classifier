@@ -307,7 +307,7 @@ app = FastAPI(lifespan=lifespan)
 class TicketCreate(BaseModel):
     id: str = Field(min_length=1, max_length=100)
     subject: str = Field(max_length=200)
-    body: str = Field(max_length=10000)
+    body: str = Field(max_length=5000)
 
 
 @app.get("/health")
